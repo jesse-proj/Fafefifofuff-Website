@@ -20,6 +20,4 @@ function renderWindows() {
 	}
 }
 
-document.addEventListener('Markdown-Rendered', renderWindows);
-
 renderWindows();
