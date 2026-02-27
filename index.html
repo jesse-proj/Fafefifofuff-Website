@@ -7,6 +7,7 @@
 		<meta name="theme-color" content="#222222">
 
 		<title> Home </title>
+		<link rel = 'icon' href = 'assets/misc/logo.ico'>
 
 		<link rel = 'stylesheet' href = 'styles/common.css'>
 		<link rel = 'stylesheet' href = 'styles/layout.css'>
@@ -45,7 +46,7 @@
 
 				<div class = 'window-content'>
 					<div style = 'height: 8rem;'> 
-						<img src = 'assets/moods/sleepy.gif' style = 'image-rendering: pixelated; height: 100%;'>
+						<img src = 'assets/moods/sleepy.gif' class = 'mood-profile-img'>
 					</div>
 
 					<div style = 'width: 100%;'> 
@@ -61,21 +62,39 @@
 		</div>
 
 		<div class = 'outer-container'>
-			<div id = 'inner-flex-container'>
+			<div class = 'small-inner-container'>
+				<div class = 'responsive-flex'>
+					<div class = 'flex-fill flex-col reveal'>
+						<div class = 'flex-row align-items-center'>
+							<h1 class = 'text-accent-color'> What I'm Doing Now </h1>
+							<p style = 'font-size: 3rem; color: pink'> • </p>
+						</div>
 
-				<div style = 'display: flex; flex-direction: column;'>
-					<div class = 'window reveal' data-title = 'Introduction' style = 'margin-bottom: 1em;'>
+						<div style = 'margin-bottom: 2rem; margin-top: 1rem;'>
+								<p style = 'text-align: justify;'> I’m in my second year of pursuing a Bachelor of Science in Information Technology at the University of Santo Tomas. I’m interested in game development and enjoy both making and playing games. I enjoy making random useful apps, too.</p>
+						</div>
 
-						<div class = 'window-content' id = 'introduction-content'>
-							<div>
-								<img src = 'assets/misc/profile.jpeg' style = 'width: 100%;'>
+						<div class = 'window reveal flex-fill' data-title = 'Current Status'>
+
+							<div class = 'window-content'>
+								<div style = 'display: flex; gap: 1rem;' id = 'status-window-content'>
+									<div id = 'image-div'>
+										<img src = 'assets/moods/angry.gif' style = 'image-rendering: pixelated; width: 100%;'>
+									</div>
+
+									<div style = 'flex: 1; padding-bottom: 1.5rem;'>
+										<p> Mood: Angry </p>
+										<p> Task: Homework </p>
+										<p style = 'border-bottom: 2px solid white;' id = 'bordered-text'> Last updated: 19/10/2025</p>
+									</div>
+								</div>
+
+								<p style = 'text-align: center;'> "Why is this so nakakatamad." </p>
 							</div>
-
-							<p style = 'text-align: justify;'> I’m in my second year of pursuing a Bachelor of Science in Information Technology at the University of Santo Tomas. I’m interested in game development and enjoy both making and playing games. I enjoy making random useful apps, too.</p>
 						</div>
 					</div>
 
-					<div class = 'window reveal' data-title = 'Blog Updates' style = 'flex: 1'>
+					<div class = 'flex-fill window reveal' data-title = 'Blog Updates'>
 
 						<div class = 'window-content' id = 'blog-updates-content'>
 							<div style = 'display: flex; gap: 1em; justify-content: center;'>
@@ -107,43 +126,49 @@
 					</div>
 				</div>
 
-				<div style = 'display: flex; flex-direction: column;'>
-					<div class = 'window reveal' data-title = 'Projects' style = ' margin-bottom: 1em;'>
+				<div class = 'reveal'>
+					<!-- Temporary -->
+					<style> 
+					  .github-graph img {
+					    /* Inverts light/dark, then rotates the colors back to green */
+					    filter: invert(1) hue-rotate(180deg);
+					  }
 
-						<div class = 'window-content' id = 'project-previews'>
-							<div class = 'project-description'>
-								<img src = 'assets/project-previews/newnote.png'>
-								<p style = 'text-align: justify;'> <b>Newnote</b> - a fully-fledged note editing app that features rich text editing, tags, and many other useful tools such as sticky mode.</p>
-							</div>
+					  .github-graph {
+					  	width: 100%;
+					  	text-align: center;
+					  	margin-top: 2rem;
+					  }
+					</style>
 
-							<div class = 'project-description'>
-								<img src = 'assets/project-previews/anatomy-explorer.png'>
-								<p style = 'text-align: justify;'> <b>Anatomy Explorer</b> - a medical-themed quiz website designed to facilitate learning. It features timed quizzes, PvP, and an anatomy dissector. </p>
-							</div>
-
-						</div>
+					<div class="github-graph">
+				    	<img src="https://ghchart.rshah.org/cd90b9/jesse-proj" alt="GitHub Contribution Graph" />
 					</div>
 
-					<div class = 'window reveal' data-title = 'Current Status' style = 'flex: 1; min-height: 0;'>
+					<div style = 'text-align: center; margin-top: 2rem;'>
+						<h1> Recent Projects </h1>
+					</div>
 
-						<div class = 'window-content'>
-							<div style = 'display: flex; gap: 1rem;' id = 'status-window-content'>
-								<div id = 'image-div'>
-									<img src = 'assets/moods/angry.gif' style = 'image-rendering: pixelated; width: 100%;'>
-								</div>
+					<div class = 'projects-container'>
+						<div class = 'project-card'>
+							<img src = 'assets/project-previews/newnote.png'>
 
-								<div style = 'flex: 1; padding-bottom: 1.5rem;'>
-									<p> Mood: Angry </p>
-									<p> Task: Homework </p>
-									<p style = 'border-bottom: 2px solid white;' id = 'bordered-text'> Last updated: 19/10/2025</p>
-								</div>
-							</div>
+							<h3> Newnote</h3>
+							<p>
+								A fully-fledged note editing app that features rich text editing, tags, and many other useful tools such as sticky mode.
+							</p>
+						</div>
 
-							<p style = 'text-align: center;'> "Why is this so nakakatamad." </p>
+						<div class = 'project-card'>
+							<img src = 'assets/project-previews/newnote.png'>
+
+							<h3> Newnote</h3>
+							<p>
+								A fully-fledged note editing app that features rich text editing, tags, and many other useful tools such as sticky mode.
+							</p>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 

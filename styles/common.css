@@ -94,32 +94,10 @@ ol, ul {
 	text-decoration-color: #cd90b9;
 }
 
-.mood-profile {
-	text-align: center;
-}
-
-.mood-profile img {
-	width: 45%; 
-	image-rendering: pixelated; 
+.mood-profile-img {
 	border-radius: 5px;
-}
-
-.mood-profile .mood-details {
-	text-align: justify; 
-	font-size: 0.90rem; 
-	margin-top: 0.5rem;
-}
-
-.message-display {
-	margin-bottom: 0.6rem;
-	margin-top: 0.6rem;
-	text-align: center;
-	font-size: 0.9rem;
-}
-
-.mood-profile .mood-details {
-	margin: 0.5rem 0 0.5rem 0; 
-	text-align: center;
+	image-rendering: pixelated; 
+	height: 100%;
 }
 
 .blend-in-button {
@@ -140,23 +118,13 @@ ol, ul {
 	font-size: 0.9rem;
 }
 
-#pagination-section > div {
-	display: flex; 
-	gap: 1rem; 
-	justify-content: center;
-}
-
-#pagination-section .inactive-nav {
-	opacity: 0.5;
-}
-
 .enlarge-on-hover {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .enlarge-on-hover:hover {
 	transform: scale(1.03);
-	box-shadow: 0 3px 5px black;
+	box-shadow: 0 3px 15px black;
 }
 
 .no-decor-link {

@@ -8,7 +8,7 @@
 
 	z-index: 5;
 
-	box-shadow: 5px 4px 30px black;
+	box-shadow: 0px 4px 10px black;
 
 	font-size: 0.9rem;
 
@@ -61,117 +61,6 @@
 	margin-bottom: 0.5rem;
 }
 
-#inner-flex-container {
-	display: flex; 
-	gap: 1rem;
-	justify-content: center;
-
-	padding-top: 10vh;
-	margin: auto; 
-
-	flex-wrap: wrap;
-}
-
-#inner-flex-container div {
-	transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@media (max-width: 767px) {
-	#inner-flex-container {
-		width: 90%;
-	}
-
-	#inner-flex-container > div {
-		flex: 0 1 100%;
-		width: 100vw;
-	}
-}
-
-@media (min-width: 768px) and (max-width: 1080px){
-	#inner-flex-container {
-		width: 98%;
-	}
-
-	#inner-flex-container > div {
-		flex: 0 1 45%;
-		width: 45%;
-	}
-}
-
-@media (min-width: 1081px) {
-	#inner-flex-container {
-		width: 80%;
-	}
-
-	#inner-flex-container > div {
-		flex: 0 1 45%;
-		width: 45%;
-	}
-}
-
-#project-previews {
-	height: 50vh; 
-
-	padding: 1rem; 
-
-	overflow-y: scroll; 
-	scrollbar-width: thin; 
-	scrollbar-color: white #02151C;
-}
-
-#introduction-content {
-	display: flex; 
-	gap: 1rem; 
-}
-
-@media (max-width: 1080px) {
-	#introduction-content {
-		flex-direction: column;
-		align-items: center;
-	}
-}
-
-.project-description {
-	border-bottom: 2px solid white;
-	padding-bottom: 1rem;
-	margin-bottom: 1rem;
-
-	display: flex; 
-	gap: 1em; 
-	justify-content: center;
-
-	flex-direction: row;
-}
-
-@media (max-width: 1080px) {
-	.project-description {
-		flex-direction: column;
-	}
-
-	.project-description img{
-		width: 100%;
-	}
-}
-
-@media (min-width: 1081px) {
-	.project-description img{
-		width: 40%;
-		height: auto;
-	}
-}
-
-@media (min-width: 768px) and (max-width: 1080px){
-	#inner-flex-container {
-		width: 98%;
-	}
-
-	#inner-flex-container > div {
-		flex: 0 1 45%;
-		width: 45%;
-	}
-}
-
-
 @media (max-width: 767px) {
 	#status-window-content #image-div {
 		width: 28%;
@@ -208,4 +97,19 @@
 	#blog-updates-content {
 		height: 45vh;
 	}
+}
+
+/* Project cards */
+
+.projects-container {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1rem;
+	text-align: justify;
+	width: 100%;
+}
+
+.project-card img {
+	width: 100%;
+	margin-bottom: 1rem;
 }
