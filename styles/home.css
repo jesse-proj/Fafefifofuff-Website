@@ -54,6 +54,10 @@
 	margin-bottom: 0.5rem;
 }
 
+#projects, #updates {
+	scroll-margin-top: 200px;
+}
+
 /* PROJECT CARDS */
 
 .projects-container {

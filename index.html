@@ -38,8 +38,8 @@
 				<b><p> FAFEFIFOFUFF </p></b>
 			</div>
 			<div class = 'right-nav-buttons'>
-				<p> Projects </p>
-				<p> Blog </p>
+				<a href = '#projects'><p> Projects </p></a>
+				<a id = 'blog-anchor'><p> Blog </p></a>
 			</div>
 		</div>
 
@@ -53,19 +53,18 @@
 
 			<div class = 'window layer' data-title = "Faf's Bio" id = 'bio-window' data-speed = 1.4>
 				<div class = 'menubar'>
-					<a href = ''> Updates </a>
-					<a href = ''> Blog </a>
+					<a href = '#updates'> About </a>
 				</div>
 
 				<div class = 'window-content'>
 					<div class = 'flex-row flex-gap-1 flex-center' style = 'font-size: 0.8rem'>
 						<div style = 'height: 8rem;'> 
-							<img src = 'assets/moods/sleepy.gif' class = 'mood-profile-img'>
+							<img src = 'assets/misc/profile.jpeg' class = 'mood-profile-img'>
 						</div>
 
 						<div> 
-							<p class = 'file-data'> File: Sleepy.gif </p>
-							<p class = 'file-data'> Location: assets/moods/ </p>
+							<p class = 'file-data'> File: profile.gif </p>
+							<p class = 'file-data'> Location: assets/profile.jpg </p>
 
 							<p class = 'text-center margin-top-1 margin-bottom-1'> 
 								Web Developer, Game Developer, and Information Technology Student
@@ -80,7 +79,8 @@
 			<div class = 'small-inner-container text-justify'>
 				<div class = 'responsive-flex'>
 					<div class = 'flex-fill flex-col reveal'>
-						<h1 class = 'text-accent-color'> What I'm Doing Now </h1>
+						<h1 class = 'text-accent-color' 
+							id = 'updates'> What I'm Doing Now </h1>
 
 						<div class = 'margin-top-1 margin-bottom-2'>
 								<p> I’m in my second year of pursuing a Bachelor of Science in Information Technology at the University of Santo Tomas. I’m interested in game development and enjoy both making and playing games. I enjoy making random useful apps, too.</p>
@@ -134,7 +134,7 @@
 					</div>
 				</div>
 
-				<div class = 'text-center margin-top-2 margin-bottom-2 reveal'>
+				<div class = 'text-center margin-top-2 margin-bottom-2 reveal' id = 'projects'>
 					<h1 class = 'text-accent-color'> Recent Projects </h1>
 					<div class = 'github-graph mobile-omit'>
 				    	<img src="https://ghchart.rshah.org/cd90b9/jesse-proj" alt="GitHub Contribution Graph" />
@@ -255,6 +255,9 @@
 			const messageDisplay = document.querySelector('#message-display');
 			const dateDisplay = document.querySelector('#date-display');
 			const moodImgDisplay = document.querySelector('#mood-img-display');
+
+			const blogAnchor = document.querySelector('#blog-anchor');
+			blogAnchor.href = window.BLOG_URL;
 
 			fetch(window.LATEST_STATUS_URL)
 			 .then(response => response.json())
