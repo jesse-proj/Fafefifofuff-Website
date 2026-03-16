@@ -162,6 +162,12 @@
 	width: 50%;
 }
 
+/* HEIGHT */
+
+.full-height {
+	height: 100%;
+}
+
 /* MISC */
 
 .inherit-bg {
