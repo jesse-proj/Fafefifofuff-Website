@@ -23,6 +23,8 @@ fetch(window.GITHUB_DATA_URL)
     if (data.status == 500) {
         return undefined;
     }
+    
+    graphRoot.classList.add('active');
 
     contributionWeeks = data.data.viewer.contributionsCollection.contributionCalendar.weeks;
     
@@ -32,7 +34,6 @@ fetch(window.GITHUB_DATA_URL)
 	contributionDays.forEach(days => {
 	    dayDiv = document.createElement('div');
 
-	    dayDiv.classList.add('contribution');
 	    dayDiv.classList.add(days.contributionLevel);
 	    
 	    graphRoot.appendChild(dayDiv);

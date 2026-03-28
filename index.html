@@ -22,45 +22,48 @@
 
         <style> 
 	  .github-graph {
-	    display: flex;
-	    height: 9rem;
-	    flex-direction: column;
-	    flex-wrap: wrap;
 	    margin-top: 1rem;
 	    width: 100%;
+	    display: none;
 	  }
 
-	  .github-graph > .contribution {
-	    margin: 0.1rem;
+	  .github-graph.active {
+	    display: grid;
+	  
+	    grid-template-rows: repeat(7, 11px);
+	  
+	    grid-auto-flow: column;
+	  
+	    gap: 6px 3px;	
 	  }
 
-	  .contribution {
+	  .github-graph > div {
 	    width: 0.8rem;
 	    height: 0.8rem;
 	    border-radius: 3px;
 	  }
 
-	  .contribution.FIRST_QUARTILE {
+	  .github-graph > .FIRST_QUARTILE {
 	    background: #cd90b9;
 	    opacity: 0.3;
 	  }
 
-	  .contribution.SECOND_QUARTILE {
+	  .github-graph > .SECOND_QUARTILE {
 	    background: #cd90b9;
 	    opacity: 0.6;
 	  }
 
-	  .contribution.THIRD_QUARTILE {
+	  .github-graph > .THIRD_QUARTILE {
 	    background: #cd90b9;
 	    opacity: 0.8;
 	  }
 
-	  .contribution.FOURTH_QUARTILE {
+	  .github-graph > .FOURTH_QUARTILE {
 	    background: #cd90b9;
 	    opacity: 1;
 	  }
 
-	  .contribution.NONE {
+	  .github-graph > .NONE {
 	    background: black;
 	    opacity: 0.5;
 	  }
