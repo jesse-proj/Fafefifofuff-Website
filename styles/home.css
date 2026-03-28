@@ -60,18 +60,13 @@
 
 /* PROJECT CARDS */
 
-.projects-container {
-	display: flex;
-	gap: 1rem;
-	margin-top: 1rem;
-	text-align: justify;
-	width: 100%;
+.project-content {
+
 }
 
 .project-card img {
 	width: 100%;
-	margin-bottom: 1rem;
-	border-radius: 5px;
+		border-radius: 5px;
 }
 
 /* MISC */

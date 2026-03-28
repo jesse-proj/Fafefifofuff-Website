@@ -1,348 +1,427 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<meta charset = 'utf-8'>
-		<meta name = 'viewport' content = 'width=device-width, initial-scale=1'>
-		<meta name="theme-color" content="#222222">
+    <head>
+        <meta charset = 'utf-8'>
+        <meta name = 'viewport' content = 'width=device-width, initial-scale=1'>
+        <meta name="theme-color" content="#222222">
 
-		<title> Home </title>
-		<link rel = 'icon' href = 'assets/misc/logo.ico'>
+        <title> Home </title>
+        <link rel = 'icon' href = 'assets/misc/logo.ico'>
 
-		<link rel = 'stylesheet' href = 'styles/common.css'>
-		<link rel = 'stylesheet' href = 'styles/layout.css'>
-		<link rel = 'stylesheet' href = 'styles/utils.css'>
-		<link rel = 'stylesheet' href = 'styles/footer.css'>
-		<link rel = 'stylesheet' href = 'styles/parallax.css'>
-		<link rel = 'stylesheet' href = 'styles/window.css'>
-		<link rel = 'stylesheet' href = 'styles/navbar.css'>
-		<link rel = 'stylesheet' href = 'styles/reveal-effect.css'>
-		<link rel = 'stylesheet' href = 'styles/home.css'>
+        <link rel = 'stylesheet' href = 'styles/common.css'>
+        <link rel = 'stylesheet' href = 'styles/layout.css'>
+        <link rel = 'stylesheet' href = 'styles/utils.css'>
+        <link rel = 'stylesheet' href = 'styles/footer.css'>
+        <link rel = 'stylesheet' href = 'styles/parallax.css'>
+        <link rel = 'stylesheet' href = 'styles/window.css'>
+        <link rel = 'stylesheet' href = 'styles/navbar.css'>
+        <link rel = 'stylesheet' href = 'styles/reveal-effect.css'>
+        <link rel = 'stylesheet' href = 'styles/home.css'>
+        <link rel = 'stylesheet' href = 'styles/tags.css'>
 
-		<style> 
-		  .github-graph img {
-		    filter: invert(1) hue-rotate(180deg);
-		  }
+        <style> 
+	  .github-graph {
+	    display: flex;
+	    height: 9rem;
+	    flex-direction: column;
+	    flex-wrap: wrap;
+	    margin-top: 1rem;
+	    width: 100%;
+	  }
 
-		  .github-graph {
-		  	width: 100%;
-		  	text-align: center;
-		  	margin-top: 1rem;
-		  }
-		</style>
-	</head>
+	  .github-graph > .contribution {
+	    margin: 0.1rem;
+	  }
 
-	<body>
-		<div class = 'navbar navbar-blend-in'>
-			<div class = 'left-nav-buttons'>
-				<b><p> FAFEFIFOFUFF </p></b>
-			</div>
-			<div class = 'right-nav-buttons'>
-				<a href = '#projects'><p> Projects </p></a>
-				<a id = 'blog-anchor'><p> Blog </p></a>
-			</div>
-		</div>
+	  .contribution {
+	    width: 0.8rem;
+	    height: 0.8rem;
+	    border-radius: 3px;
+	  }
 
-		<div class = 'parallax'>
-			<img src = 'assets/parallax/1.png' data-speed = 0 style = 'z-index: 1;'>
-			<img src = 'assets/parallax/2.png' data-speed = 0.7 style = 'z-index: 2; top: 15%'>
-			<img src = 'assets/parallax/3.png' data-speed = 0.5 style = 'z-index: 3; top: 15%'>
-			<img src = 'assets/parallax/4.png' data-speed = 0.3 style = 'z-index: 4; top: 15%'>
-			<img src = 'assets/parallax/5.png' data-speed = 0.1 style = 'z-index: 5; top: 15%'>
-			<img src = 'assets/parallax/6.png' data-speed = 0 style = 'z-index: 6; top: 15%'>
+	  .contribution.FIRST_QUARTILE {
+	    background: #cd90b9;
+	    opacity: 0.3;
+	  }
 
-			<div class = 'window layer' data-title = "Faf's Bio" id = 'bio-window' data-speed = 1.4>
-				<div class = 'menubar'>
-					<a href = '#updates'> About </a>
-				</div>
+	  .contribution.SECOND_QUARTILE {
+	    background: #cd90b9;
+	    opacity: 0.6;
+	  }
 
-				<div class = 'window-content'>
-					<div class = 'flex-row flex-gap-1 flex-center' style = 'font-size: 0.8rem'>
-						<div style = 'height: 8rem;'> 
-							<img src = 'assets/misc/profile.jpeg' class = 'mood-profile-img'>
-						</div>
+	  .contribution.THIRD_QUARTILE {
+	    background: #cd90b9;
+	    opacity: 0.8;
+	  }
 
-						<div> 
-							<p class = 'file-data'> File: profile.gif </p>
-							<p class = 'file-data'> Location: assets/profile.jpg </p>
+	  .contribution.FOURTH_QUARTILE {
+	    background: #cd90b9;
+	    opacity: 1;
+	  }
 
-							<p class = 'text-center margin-top-1 margin-bottom-1'> 
-								Web Developer, Game Developer, and Information Technology Student
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	  .contribution.NONE {
+	    background: black;
+	    opacity: 0.5;
+	  }
+	  
+          .github-graph-fallback {
+            display: none;
+	  }
 
-		<div class = 'outer-container'>
-			<div class = 'small-inner-container text-justify'>
-				<div class = 'responsive-flex'>
-					<div class = 'flex-fill flex-col reveal'>
-						<h1 class = 'text-accent-color' 
-							id = 'updates'> What I'm Doing Now </h1>
+	  .github-graph-fallback.active{
+            display: block;
+	  }
 
-						<div class = 'margin-top-1 margin-bottom-2'>
-								<p> I’m in my second year of pursuing a Bachelor of Science in Information Technology at the University of Santo Tomas. I’m interested in game development and enjoy both making and playing games. I enjoy making random useful apps, too.</p>
-						</div>
+          .github-graph-fallback img {
+            filter: invert(1) hue-rotate(180deg);
+          }
 
-						<div class = 'window reveal flex-fill' data-title = 'Current Status'>
+          .github-graph-fallback {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+          }
+        </style>
+    </head>
 
-							<div class = 'window-content'>
-								<div class = 'responsive-flex-no-width-fill flex-center'>
-									<img src = 'assets/moods/neutral.gif' 
-										 id = 'mood-img-display'
-										 class = 'mood-profile-img' 
-										 style = 'height: 8rem'>
+    <body>
+        <div class = 'navbar navbar-blend-in'>
+            <div class = 'left-nav-buttons'>
+                <b><p> FAFEFIFOFUFF </p></b>
+            </div>
+            <div class = 'right-nav-buttons'>
+                <a href = '#projects'><p> Projects </p></a>
+                <a id = 'blog-anchor'><p> Blog </p></a>
+            </div>
+        </div>
 
-									<div class = 'flex-fill full-width'>
+        <div class = 'parallax'>
+            <img src = 'assets/parallax/1.png' data-speed = 0 style = 'z-index: 1;'>
+            <img src = 'assets/parallax/2.png' data-speed = 0.7 style = 'z-index: 2; top: 15%'>
+            <img src = 'assets/parallax/3.png' data-speed = 0.5 style = 'z-index: 3; top: 15%'>
+            <img src = 'assets/parallax/4.png' data-speed = 0.3 style = 'z-index: 4; top: 15%'>
+            <img src = 'assets/parallax/5.png' data-speed = 0.1 style = 'z-index: 5; top: 15%'>
+            <img src = 'assets/parallax/6.png' data-speed = 0 style = 'z-index: 6; top: 15%'>
 
-										<p class = 'text-accent-color text-center'
-										   id = 'message-display'> 
-										</p>
+            <div class = 'window layer' data-title = "Faf's Bio" id = 'bio-window' data-speed = 1.4>
+                <div class = 'menubar'>
+                    <a href = '#updates'> About </a>
+                </div>
 
-										<hr>
+                <div class = 'window-content'>
+                    <div class = 'flex-row flex-gap-1 flex-center' style = 'font-size: 0.8rem'>
+                        <div style = 'height: 8rem;'> 
+                            <img src = 'assets/misc/profile.jpeg' class = 'mood-profile-img'>
+                        </div>
 
-										<div class = 'flex-row flex-space-between'>
-											<p> Mood: </p>
-											<p class = 'text-accent-color'
-											   id = 'mood-display'></p>
-										</div>
+                        <div> 
+                            <p class = 'file-data'> File: profile.gif </p>
+                            <p class = 'file-data'> Location: assets/profile.jpg </p>
 
-										<div class = 'flex-row flex-space-between'>
-											<p> Task: </p>
-											<p class = 'text-accent-color'
-											   id = 'task-display'></p>
-										</div>
+                            <p class = 'text-center margin-top-1 margin-bottom-1'> 
+                                Web Developer, Game Developer, and Information Technology Student
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-										<div class = 'flex-row flex-space-between'>
-											<p> Last Updated: </p>
-											<p class = 'text-accent-color'
-											   id = 'date-display'></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+        <div class = 'outer-container'>
+            <div class = 'small-inner-container text-justify'>
+                <div class = 'responsive-flex'>
+                    <div class = 'flex-fill flex-col reveal'>
+                        <h1 class = 'text-accent-color' 
+                            id = 'updates'> What I'm Doing Now </h1>
 
-					<div class = 'flex-fill window reveal' data-title = 'Blog Updates'>
+                        <div class = 'margin-top-1 margin-bottom-2'>
+                                <p> I’m in my second year of pursuing a Bachelor of Science in Information Technology at the University of Santo Tomas. I’m interested in game development and enjoy both making and playing games. I enjoy making random useful apps, too.</p>
+                        </div>
 
-						<div class = 'window-content' id = 'recent-blogs'>
+                        <div class = 'window reveal flex-fill' data-title = 'Current Status'>
 
-						</div>
-					</div>
-				</div>
+                            <div class = 'window-content'>
+                                <div class = 'responsive-flex-no-width-fill flex-center'>
+                                    <img src = 'assets/moods/neutral.gif' 
+                                         id = 'mood-img-display'
+                                         class = 'mood-profile-img' 
+                                         style = 'height: 8rem'>
 
-				<div class = 'text-center margin-top-2 margin-bottom-2 reveal' id = 'projects'>
-					<h1 class = 'text-accent-color'> Recent Projects </h1>
-					<div class = 'github-graph mobile-omit'>
-				    	<img src="https://ghchart.rshah.org/cd90b9/jesse-proj" alt="GitHub Contribution Graph" />
-					</div>
-				</div>
+                                    <div class = 'flex-fill full-width'>
 
-				<div class = 'projects-container reveal'>
+                                        <p class = 'text-accent-color text-center'
+                                           id = 'message-display'> 
+                                        </p>
 
-					<div class = 'responsive-flex'>
-						<div class = 'flex-fill'>
-							<div class = 'window reveal full-height' data-title = 'Blogging Site'>
+                                        <hr>
 
-								<div class = 'window-content'>
-									<div class = 'project-card'>
-										<img src = 'assets/project-previews/blog.png'>
+                                        <div class = 'flex-row flex-space-between'>
+                                            <p> Mood: </p>
+                                            <p class = 'text-accent-color'
+                                               id = 'mood-display'></p>
+                                        </div>
 
-										<h3 class = 'text-accent-color'> Personal Blog </h3>
-										<p>
-											A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
-											backlinks, tags, comments mood tracking, and more. 
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
+                                        <div class = 'flex-row flex-space-between'>
+                                            <p> Task: </p>
+                                            <p class = 'text-accent-color'
+                                               id = 'task-display'></p>
+                                        </div>
 
-						<div class = 'flex-col flex-gap-1 flex-fill'>
-							<div class = 'window reveal flex-fill' data-title = 'Text Editor'>
-								<div class = 'window-content'>
-									<div class = 'project-card responsive-flex'>
-										<img src = 'assets/project-previews/newnote.png'>
+                                        <div class = 'flex-row flex-space-between'>
+                                            <p> Last Updated: </p>
+                                            <p class = 'text-accent-color'
+                                               id = 'date-display'></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-										<div>
-											<h3 class = 'text-accent-color'> Newnote</h3>
-											<p>
-												A fully-fledged note editing app that features rich text editing, tags, and many other useful tools such as sticky mode. Created in Tkinter.
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+                    <div class = 'flex-fill window reveal' data-title = 'Blog Updates'>
+
+                        <div class = 'window-content' id = 'recent-blogs'>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class = 'text-center margin-top-2 margin-bottom-2 reveal' id = 'projects'>
+                    <h1 class = 'text-accent-color'> Recent Projects </h1>
+                    <div class = 'github-graph-fallback mobile-omit'>
+                        <img src="https://ghchart.rshah.org/cd90b9/jesse-proj" alt="GitHub Contribution Graph" />
+                    </div>
+		    <div class = 'github-graph'>
+		    </div>
+                </div>
+
+                <div class = 'reveal'>
+
+                    <div class = 'responsive-flex'>
+                        <div class = 'flex-fill'>
+                            <div class = 'window reveal flex-col full-height' data-title = 'Blogging Site'>
+
+                                <div class = 'window-content flex-col flex-fill flex-space-between'>
+                                    <div class = 'project-card'>
+                                        <img src = 'assets/project-previews/blog.png'>
+
+                                        <h3 class = 'text-accent-color'> Personal Blog </h3>
+                                        <p style = 'height: 4.5rem; overflow-y: hidden;'>
+                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
+                                            backlinks, tags, comments mood tracking, and more. 
+                                            
+                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
+
+                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
+
+                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
+
+                                        </p>
+                                    </div>
+                                        <div class = 'tag-container flex-space-between'>
+                                            <p> HTML, CSS, JS </p>
+                                            <p> Flask </p>
+                                            <p> AWS Elastic Beanstalk </p>
+                                            <p> AWS S3 </p>
+                                            <p> AWS SES </p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = 'flex-fill flex-col flex-gap-1'>
+                            <div class = 'window reveal flex-fill' data-title = 'Text Editor'>
+                                <div class = 'window-content'>
+                                    <div class = 'project-card responsive-flex'>
+                                        <img src = 'assets/project-previews/newnote.png'>
+
+                                        <div>
+                                            <h3 class = 'text-accent-color'> Newnote</h3>
+                                            <p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = 'tag-container'>
+                                        <p> Python </p>
+                                        <p> Tkinter </p>
+                                    </div>
+                                </div>
+                            </div>
 
 
-							<div class = 'window reveal flex-fill' data-title = 'Anatomy Quiz Site'>
-								<div class = 'window-content'>
-									<div class = 'project-card responsive-flex'>
-										<img src = 'assets/project-previews/anatomy-explorer.png'>
+                            <div class = 'window reveal flex-fill' data-title = 'Anatomy Quiz Site'>
+                                <div class = 'window-content'>
+                                    <div class = 'project-card responsive-flex'>
+                                        <img src = 'assets/project-previews/anatomy-explorer.png'>
 
-										<div>
-											<h3 class = 'text-accent-color'> Anatomy Explorer </h3>
-											<p>
-												An anatomy quiz website that has PvP features, leaderboards, and an anatomy dissector. Made with Flask and Vanilla JavaScript.
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                        <div>
+                                            <h3 class = 'text-accent-color'> Anatomy Explorer </h3>
+                                            <p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = 'tag-container'>
+                                        <p> HTML, CSS, JS </p>
+                                        <p> Flask </p>
+                                        <p> PythonAnywhere </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<footer>
-			<div class = 'footer-content'>
-				<div id = 'website-description'>
-					<a><h2> Fafefifofuff </h2></a>
-					<p> I try to have fun and make cool stuff so I built this, my own little cozy place on the internet. </p>
-					<p style = 'margin-top: 1em;'> @2025. All Rights Reserved by <a class = 'name-emphasis'>Fafefifofuff</a></p>
-				</div>
+        <footer>
+            <div class = 'footer-content'>
+                <div id = 'website-description'>
+                    <a><h2> Fafefifofuff </h2></a>
+                    <p> I try to have fun and make cool stuff so I built this, my own little cozy place on the internet. </p>
+                    <p style = 'margin-top: 1em;'> @2025. All Rights Reserved by <a class = 'name-emphasis'>Fafefifofuff</a></p>
+                </div>
 
-				<div class = 'mobile-omit tablet-omit'>
-					<h3>Contact me Here</h3>
-					
-					<div class = 'contact-info-container'>
-						<img src = 'assets/social-media-icons/email.svg' class = 'contact-icon'>
-						<a class = 'no-decor-link'>jian.santiago39@gmail.com</a>
-					</div>
+                <div class = 'mobile-omit tablet-omit'>
+                    <h3>Contact me Here</h3>
+                    
+                    <div class = 'contact-info-container'>
+                        <img src = 'assets/social-media-icons/email.svg' class = 'contact-icon'>
+                        <a class = 'no-decor-link'>jian.santiago39@gmail.com</a>
+                    </div>
 
-					<div class = 'contact-info-container'>
-						<img src = 'assets/social-media-icons/twitter.svg' class = 'contact-icon'>
-						<a href = 'https://x.com/fafefifofuff' class = 'no-decor-link'>@fafefifofuff</a>
-					</div>
-				</div>
+                    <div class = 'contact-info-container'>
+                        <img src = 'assets/social-media-icons/twitter.svg' class = 'contact-icon'>
+                        <a href = 'https://x.com/fafefifofuff' class = 'no-decor-link'>@fafefifofuff</a>
+                    </div>
+                </div>
 
-				<div id = 'money-donation' class = 'mobile-omit'>
-					<h3>Buy Me Coffee</h3>
-					<a href = 'https://ko-fi.com/fafefifofuff'>
-						<img src = 'assets/misc/donate-button.png' 
-							 style = 'width: 100%; margin-top: 0.5rem;'>
-					</a>
-				</div>
+                <div id = 'money-donation' class = 'mobile-omit'>
+                    <h3>Buy Me Coffee</h3>
+                    <a href = 'https://ko-fi.com/fafefifofuff'>
+                        <img src = 'assets/misc/donate-button.png' 
+                             style = 'width: 100%; margin-top: 0.5rem;'>
+                    </a>
+                </div>
 
-				<div id = 'newsletter' class = 'mobile-omit'>
-					<h3>Join my Newsletter</h3>
+                <div id = 'newsletter' class = 'mobile-omit'>
+                    <h3>Join my Newsletter</h3>
 
-					<form method = 'POST' action = ''> <!-- TODO: Implement this -->
-						
-						<input type = 'text' 
-							   placeholder = 'youremail@emailprovider.com'>
-						
-						<input type = 'button' 
-							   value = 'Subscribe'>
-					</form>
-				</div> 
-			</div>
-		</footer>
+                    <form method = 'POST' action = ''> <!-- TODO: Implement this -->
+                        
+                        <input type = 'text' 
+                               placeholder = 'youremail@emailprovider.com'>
+                        
+                        <input type = 'button' 
+                               value = 'Subscribe'>
+                    </form>
+                </div> 
+            </div>
+        </footer>
 
-		<script src = 'scripts/window.js'></script>	
-		<script src = 'scripts/parallax.js'></script>	
-		<script src = 'scripts/reveal-effect.js'></script>	
-		<script src = 'scripts/bio-window.js'></script>
+        <script src = 'scripts/window.js'></script> 
+        <script src = 'scripts/parallax.js'></script>   
+        <script src = 'scripts/reveal-effect.js'></script>  
+        <script src = 'scripts/bio-window.js'></script>
 
-		<script src = 'config.js'> </script>
-		<script>
-			const recentBlogsContainer = document.querySelector('#recent-blogs');
-			const moodDisplay = document.querySelector('#mood-display');
-			const taskDisplay = document.querySelector('#task-display');
-			const messageDisplay = document.querySelector('#message-display');
-			const dateDisplay = document.querySelector('#date-display');
-			const moodImgDisplay = document.querySelector('#mood-img-display');
+        <script src = 'config.js'> </script>
+	
+        <script src = 'scripts/graph.js'></script>
 
-			const blogAnchor = document.querySelector('#blog-anchor');
-			blogAnchor.href = window.BLOG_URL;
+        <script>
+            const recentBlogsContainer = document.querySelector('#recent-blogs');
+            const moodDisplay = document.querySelector('#mood-display');
+            const taskDisplay = document.querySelector('#task-display');
+            const messageDisplay = document.querySelector('#message-display');
+            const dateDisplay = document.querySelector('#date-display');
+            const moodImgDisplay = document.querySelector('#mood-img-display');
 
-			fetch(window.LATEST_STATUS_URL)
-			 .then(response => {
+            const blogAnchor = document.querySelector('#blog-anchor');
+            blogAnchor.href = window.BLOG_URL;
 
-			 	if (!response.ok) {
-			 		throw new Error(`HTTP error! status: ${response.status}`);
-			 	}
+            fetch(window.LATEST_STATUS_URL)
+             .then(response => {
 
-			 	return response.json();
-			 })
-			 .catch(error => {
-		        console.warn('Using fallback data due to fetch failure:', error.message);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-		        return {
-		            mood: 'Neutral',
-		            message: 'N/A',
-		            task: 'N/A',
-		            datetime: 'N/A'
-		        };
-			 })
-			 .then(data => {
-			 	moodDisplay.textContent = data.mood;
-			 	taskDisplay.textContent = data.task;
-			 	messageDisplay.textContent = '"' + data.message + '"';
-			 	dateDisplay.textContent = new Date(data.datetime).toLocaleString(undefined, {				
-			 		year: 'numeric',
-					month: 'short',
-					day: 'numeric'
-				});
-				moodImgDisplay.src = 'assets/moods/' + data.mood + '.gif';
-			 });
+                return response.json();
+             })
+             .catch(error => {
+                console.warn('Using fallback data due to fetch failure:', error.message);
 
-			fetch(window.RECENT_BLOGS_URL)
-			 .then(response => {
-			 	if (!response.ok) {
-			 		throw new Error(`HTTP error! status: ${response.status}`);
-			 	}
+                return {
+                    mood: 'Neutral',
+                    message: 'N/A',
+                    task: 'N/A',
+                    datetime: 'N/A'
+                };
+             })
+             .then(data => {
+                moodDisplay.textContent = data.mood;
+                taskDisplay.textContent = data.task;
+                messageDisplay.textContent = '"' + data.message + '"';
+                dateDisplay.textContent = new Date(data.datetime).toLocaleString(undefined, {               
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                moodImgDisplay.src = 'assets/moods/' + data.mood + '.gif';
+             });
 
-			 	return response.json();
-			 })
-			 .catch(error => {
-		        console.warn('Using fallback data due to fetch failure:', error.message);
+            fetch(window.RECENT_BLOGS_URL)
+             .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-		        return [];
-			 })
-			 .then(data => {
-			 	data.forEach(post => {
-				 	const postDiv = document.createElement('div');
+                return response.json();
+             })
+             .catch(error => {
+                console.warn('Using fallback data due to fetch failure:', error.message);
 
-				 	const title = document.createElement('p');
-				 	title.classList.add('text-accent-color');
-				 	title.textContent = post.title;
+                return [];
+             })
+             .then(data => {
+                data.forEach(post => {
+                    const postDiv = document.createElement('div');
 
-				 	postDiv.appendChild(title);
+                    const title = document.createElement('p');
+                    title.classList.add('text-accent-color');
+                    title.textContent = post.title;
 
-				 	const metaInfoContainer = document.createElement('div');
-				 	metaInfoContainer.classList.add('flex-row');
-				 	metaInfoContainer.classList.add('flex-space-between');
+                    postDiv.appendChild(title);
 
-				 	const date = document.createElement('p');
-					date.textContent = new Date(post.datetime).toLocaleString(undefined, {
-						year: 'numeric',
-						month: 'short',
-						day: 'numeric'
-					});
+                    const metaInfoContainer = document.createElement('div');
+                    metaInfoContainer.classList.add('flex-row');
+                    metaInfoContainer.classList.add('flex-space-between');
 
-				 	const time = document.createElement('p');
-					time.textContent = new Date(post.datetime).toLocaleString(undefined, {
-						hour: '2-digit',
-						minute: '2-digit',
-						hour12: true   
-					});
+                    const date = document.createElement('p');
+                    date.textContent = new Date(post.datetime).toLocaleString(undefined, {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    });
 
-				 	metaInfoContainer.appendChild(date);
-				 	metaInfoContainer.appendChild(time);
+                    const time = document.createElement('p');
+                    time.textContent = new Date(post.datetime).toLocaleString(undefined, {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true   
+                    });
 
-				 	const border = document.createElement('hr');
+                    metaInfoContainer.appendChild(date);
+                    metaInfoContainer.appendChild(time);
 
-				 	postDiv.appendChild(metaInfoContainer);
-				 	postDiv.appendChild(border);
+                    const border = document.createElement('hr');
 
-				 	recentBlogsContainer.appendChild(postDiv);
-			 	});
-			 });
-		</script>
-	</body>
+                    postDiv.appendChild(metaInfoContainer);
+                    postDiv.appendChild(border);
+
+                    recentBlogsContainer.appendChild(postDiv);
+                });
+             });
+        </script>
+    </body>
 </html>

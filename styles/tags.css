@@ -1,0 +1,23 @@
+.tag-container {
+	display: flex;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+	flex-wrap: wrap;
+	margin-top: 1rem;
+	overflow-y: auto;
+	align-content: flex-start;
+}
+
+.tag-container > p, .tag-container .tag {
+	padding: 0.3em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+
+	border: 1px dashed #cd90b9;
+	color: #cd90b9;
+
+	border-radius: 3px;
+	height: 1em;
+}
+
+
