@@ -19,73 +19,7 @@
         <link rel = 'stylesheet' href = 'styles/reveal-effect.css'>
         <link rel = 'stylesheet' href = 'styles/home.css'>
         <link rel = 'stylesheet' href = 'styles/tags.css'>
-
-        <style> 
-	  .github-graph {
-	    margin-top: 1rem;
-	    width: 100%;
-	    display: none;
-	  }
-
-	  .github-graph.active {
-	    display: grid;
-	  
-	    grid-template-rows: repeat(7, 11px);
-	  
-	    grid-auto-flow: column;
-	  
-	    gap: 6px 3px;	
-	  }
-
-	  .github-graph > div {
-	    width: 0.8rem;
-	    height: 0.8rem;
-	    border-radius: 3px;
-	  }
-
-	  .github-graph > .FIRST_QUARTILE {
-	    background: #cd90b9;
-	    opacity: 0.3;
-	  }
-
-	  .github-graph > .SECOND_QUARTILE {
-	    background: #cd90b9;
-	    opacity: 0.6;
-	  }
-
-	  .github-graph > .THIRD_QUARTILE {
-	    background: #cd90b9;
-	    opacity: 0.8;
-	  }
-
-	  .github-graph > .FOURTH_QUARTILE {
-	    background: #cd90b9;
-	    opacity: 1;
-	  }
-
-	  .github-graph > .NONE {
-	    background: black;
-	    opacity: 0.5;
-	  }
-	  
-          .github-graph-fallback {
-            display: none;
-	  }
-
-	  .github-graph-fallback.active{
-            display: block;
-	  }
-
-          .github-graph-fallback img {
-            filter: invert(1) hue-rotate(180deg);
-          }
-
-          .github-graph-fallback {
-            width: 100%;
-            text-align: center;
-            margin-top: 1rem;
-          }
-        </style>
+        <link rel = 'stylesheet' href = 'styles/graph.css'>
     </head>
 
     <body>
@@ -192,9 +126,11 @@
 
                 <div class = 'text-center margin-top-2 margin-bottom-2 reveal' id = 'projects'>
                     <h1 class = 'text-accent-color'> Recent Projects </h1>
+		    
                     <div class = 'github-graph-fallback mobile-omit'>
                         <img src="https://ghchart.rshah.org/cd90b9/jesse-proj" alt="GitHub Contribution Graph" />
                     </div>
+
 		    <div class = 'github-graph'>
 		    </div>
                 </div>
@@ -213,13 +149,6 @@
                                         <p style = 'height: 4.5rem; overflow-y: hidden;'>
                                             A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
                                             backlinks, tags, comments mood tracking, and more. 
-                                            
-                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
-
-                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
-
-                                            A personal blog that runs on Flask and Vanilla JavaScript. It has features such as Obsidian-style
-
                                         </p>
                                     </div>
                                         <div class = 'tag-container flex-space-between'>
@@ -328,103 +257,8 @@
         <script src = 'scripts/bio-window.js'></script>
 
         <script src = 'config.js'> </script>
-	
+
+	<script src = 'scripts/blog-widgets.js'></script>
         <script src = 'scripts/graph.js'></script>
-
-        <script>
-            const recentBlogsContainer = document.querySelector('#recent-blogs');
-            const moodDisplay = document.querySelector('#mood-display');
-            const taskDisplay = document.querySelector('#task-display');
-            const messageDisplay = document.querySelector('#message-display');
-            const dateDisplay = document.querySelector('#date-display');
-            const moodImgDisplay = document.querySelector('#mood-img-display');
-
-            const blogAnchor = document.querySelector('#blog-anchor');
-            blogAnchor.href = window.BLOG_URL;
-
-            fetch(window.LATEST_STATUS_URL)
-             .then(response => {
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                return response.json();
-             })
-             .catch(error => {
-                console.warn('Using fallback data due to fetch failure:', error.message);
-
-                return {
-                    mood: 'Neutral',
-                    message: 'N/A',
-                    task: 'N/A',
-                    datetime: 'N/A'
-                };
-             })
-             .then(data => {
-                moodDisplay.textContent = data.mood;
-                taskDisplay.textContent = data.task;
-                messageDisplay.textContent = '"' + data.message + '"';
-                dateDisplay.textContent = new Date(data.datetime).toLocaleString(undefined, {               
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
-                moodImgDisplay.src = 'assets/moods/' + data.mood + '.gif';
-             });
-
-            fetch(window.RECENT_BLOGS_URL)
-             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                return response.json();
-             })
-             .catch(error => {
-                console.warn('Using fallback data due to fetch failure:', error.message);
-
-                return [];
-             })
-             .then(data => {
-                data.forEach(post => {
-                    const postDiv = document.createElement('div');
-
-                    const title = document.createElement('p');
-                    title.classList.add('text-accent-color');
-                    title.textContent = post.title;
-
-                    postDiv.appendChild(title);
-
-                    const metaInfoContainer = document.createElement('div');
-                    metaInfoContainer.classList.add('flex-row');
-                    metaInfoContainer.classList.add('flex-space-between');
-
-                    const date = document.createElement('p');
-                    date.textContent = new Date(post.datetime).toLocaleString(undefined, {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                    });
-
-                    const time = document.createElement('p');
-                    time.textContent = new Date(post.datetime).toLocaleString(undefined, {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: true   
-                    });
-
-                    metaInfoContainer.appendChild(date);
-                    metaInfoContainer.appendChild(time);
-
-                    const border = document.createElement('hr');
-
-                    postDiv.appendChild(metaInfoContainer);
-                    postDiv.appendChild(border);
-
-                    recentBlogsContainer.appendChild(postDiv);
-                });
-             });
-        </script>
     </body>
 </html>
